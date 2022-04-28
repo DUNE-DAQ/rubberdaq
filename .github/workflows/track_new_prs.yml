@@ -49,3 +49,4 @@ jobs:
                 }
               }
             }' -f project=$PROJECT_ID -f issue=$PR_NUMBER --jq '.data.addProjectNextItem.projectNextItem.id')"        
+
