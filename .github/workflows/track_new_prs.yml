@@ -35,13 +35,17 @@ jobs:
       - name: Add issue to project
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_CI_ISSUES }}
-          ISSUE_ID: ${{ github.event.pull.node_id }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          item_id="$( gh api graphql -f query='
+            echo github.event.number = ${{ github.event.number  }}
+            echo github.event.pull_request.number = ${{ github.event.pull_request.number }}
+            echo github.event.issue.number = ${{ github.event.issue.number }}
+
+            item_id="$( gh api graphql -f query='
             mutation($project:ID!, $issue:ID!) {
               addProjectNextItem(input: {projectId: $project, contentId: $issue}) {
                 projectNextItem {
                   id
                 }
               }
-            }' -f project=$PROJECT_ID -f issue=$ISSUE_ID --jq '.data.addProjectNextItem.projectNextItem.id')"        
+            }' -f project=$PROJECT_ID -f issue=$PR_NUMBER --jq '.data.addProjectNextItem.projectNextItem.id')"        
