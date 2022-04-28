@@ -46,4 +46,3 @@ jobs:
                 }
               }
             }' -f project=$PROJECT_ID -f issue=$node_id --jq '.data.addProjectNextItem.projectNextItem.id')"        
-
