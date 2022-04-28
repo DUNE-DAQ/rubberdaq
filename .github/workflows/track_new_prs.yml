@@ -1,9 +1,8 @@
-name: Add issue to project
+name: Add pull request to project
 on:
   pull_request:
     types:
       - opened
-      
 jobs:
   track_issue:
     runs-on: ubuntu-latest
