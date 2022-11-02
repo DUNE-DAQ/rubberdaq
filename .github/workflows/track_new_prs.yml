@@ -37,4 +37,4 @@ jobs:
                   id
                 }
               }
-            }' -f project=$PROJECT_ID -f issue=$ISSUE_ID --jq '.data.addProjectV2ItemById.item.id')"    
+            }' -f project=$PROJECT_ID -f issue=$node_id --jq '.data.addProjectV2ItemById.item.id')"    
